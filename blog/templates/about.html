@@ -1,4 +1,25 @@
 {% extends "./index.html" %}
+{% load static %}
 {% block main %}
-<h1>about</h1>
+<div id = "main">
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2>关于</h2>
+            </div>
+        </header>
+        <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+        <footer>
+            <ul class="actions">
+            </ul>
+            <ul class="stats">
+                <li><a href="#">General</a></li>
+                <li><a href="#" class="icon fa-heart">28</a></li>
+                <li><a href="#" class="icon fa-comment">128</a></li>
+            </ul>
+        </footer>
+    </article>
+</div>
+{% endblock %}
+{% block sidebar %}
 {% endblock %}
