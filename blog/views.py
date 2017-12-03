@@ -5,11 +5,19 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from . import models
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    articles = models.article.objects.order_by('article_id')[:5]
+    context = {'articles':articles}
+    return render(request, 'index.html', context)
+
+def index2(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {'latest_question_list': latest_question_list, 'sta':'shortcuts'}
+    return render(request, 'polls/index.html', context)
 
 def about(request):
     return render(request, 'about.html')
