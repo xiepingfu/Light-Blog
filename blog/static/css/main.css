@@ -3424,15 +3424,14 @@
 					margin-top: 0;
 					padding-top: 0;
 				}
-*/
-		body.is-menu-visible #menu {
+
+		/*body.is-menu-visible #menu {
 			-moz-transform: translateX(0);
 			-webkit-transform: translateX(0);
 			-ms-transform: translateX(0);
 			transform: translateX(0);
 			visibility: visible;
 		}
-
 		@media screen and (max-width: 736px) {
 
 			#menu > * {

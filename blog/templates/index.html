@@ -14,15 +14,10 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="{% url 'blog:index' %}">xiepingfu</a></h1>
+						<h1><a href="{% url 'blog:index' %}" onclick="onclicked()">xiepingfu</a></h1>
 						<nav class="links">
 							<ul>
 								<li><a href="{% url 'blog:index' %}">主页</a></li>
-								<!--
-								<li><a href="{% url 'blog:study' %}">学习</a></li>
-								<li><a href="#">随笔</a></li>
-								<li><a href="#">其它</a></li>
-								-->
 								<li><a href="{% url 'blog:about' %}">关于</a></li>
 							</ul>
 						</nav>
@@ -65,17 +60,23 @@
 							</section>
 
 						<!-- Actions -->
-							<section>
-
+							<section id="loginBox">
 								<ul class="actions vertical">
-									<li><input id="username" class="form-control" type="text" placeholder="Username" name="username"></li>
-									<li><input id="password" class="form-control" type="password" placeholder="Password" name="password"></li>
+									<li><input id="lusername" class="form-control" type="text" placeholder="Username" name="username"></li>
+									<li><input id="lpassword" class="form-control" type="password" placeholder="Password" name="password"></li>
 									<li><a href="/admin" class="button big fit">登录</a></li>
 								</ul>
-								<a href="#menu">没有帐号？创建一个</a>
+								<a href="" id="change" onclick="funchange()">没有帐号？创建一个</a>
 							</section>
+								<section id="RegisterBox" style="display:none">
+								<ul class="actions vertical">
+									<li><input id="rusername" class="form-control" type="text" placeholder="Username" name="username"></li>
+									<li><input id="rpassword" class="form-control" type="password" placeholder="Password" name="password"></li>
+									<li><a href="/admin" class="button big fit">注册</a></li>
+								</ul>
+								<a href="javascript: showLoginForm();" id="change2">已有帐号？登录</a>
+								</section>
 					</section>
-                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 
 					{% block main %}
 				<!-- Main -->
@@ -335,8 +336,10 @@
 			<script src="{% static 'js/jquery.min.js' %}"></script>
 			<script src="{% static 'js/skel.min.js' %}"></script>
 			<script src="{% static 'js/util.js' %}"></script>
-			<!--[if lte IE 8]><script src="{% static 'js/ie/respond.min.js' %}"></script><![endif]-->
+			<!--[if lte IE 8]>
+			<script src="{% static 'js/ie/respond.min.js' %}"></script><![endif]-->
 			<script src="{% static 'js/main.js' %}"></script>
+			<script src="{% static 'js/change.js' %}"></script>
 
 	</body>
 </html>
