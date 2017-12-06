@@ -20,7 +20,7 @@ def index(request):
     context = {'articles':articles,'previous':previous,'next':next,'nextpage':page+1,'prepage':page-1}
     return render(request, 'index.html', context)
 
-def article(request,page):
+def view(request,page):
     check = models.article.objects.order_by('article_id')[5*page:5*(page+1)]
     next = str('')
     previous = str('')
@@ -31,6 +31,11 @@ def article(request,page):
     articles = models.article.objects.order_by('article_id')[5*(page-1):5*page]
     context = {'articles':articles,'previous':previous,'next':next,'nextpage':page+1,'prepage':page-1}
     return render(request, 'index.html', context)
+
+def Article(request, article_id):
+    article = models.article.objects.get(pk=article_id)
+    context = {'article':article}
+    return render(request, 'article.html',context)
 
 def about(request):
     return render(request, 'about.html')

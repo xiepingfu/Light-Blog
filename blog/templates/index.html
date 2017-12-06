@@ -54,13 +54,6 @@
 						<!-- Links -->
 							<section>
 								<ul class="links">
-									<li><a href="{% url 'blog:index' %}">主页</a>
-									<!--
-									<li><a href="{% url 'blog:study' %}">学习</a></li>
-									<li><a href="#">随笔</a></li>
-									<li><a href="#">其它</a></li>
-									-->
-									<a href="{% url 'blog:about' %}">关于</a></li>
 									<li><a href="{% url 'blog:index' %}">主页</a></li>
 									<!--
 									<li><a href="{% url 'blog:study' %}">学习</a></li>
@@ -73,12 +66,14 @@
 
 						<!-- Actions -->
 							<section>
-								<ul class="actions vertical">
-									<li><a href="/admin" class="button big fit">登录</a></li>
-									<li><a href="/admin" class="button big fit">注册</a></li>
-								</ul>
-							</section>
 
+								<ul class="actions vertical">
+									<li><input id="username" class="form-control" type="text" placeholder="Username" name="username"></li>
+									<li><input id="password" class="form-control" type="password" placeholder="Password" name="password"></li>
+									<li><a href="/admin" class="button big fit">登录</a></li>
+								</ul>
+								<a href="#menu">没有帐号？创建一个</a>
+							</section>
 					</section>
                     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 
@@ -100,12 +95,12 @@
 									</div>
 
 								</header>
-								<a href="#" class="image featured"><img src="{{article.image.url}}" alt="" /></a>
+								<a href="{% url 'blog:article' article.article_id %}" class="image featured"><img src="{{article.image.url}}" alt="" /></a>
 								<p>
 									{{article.synopsis}}
 								</p>								<footer>
 									<ul class="actions">
-										<li><a href="#" class="button big">阅读全文</a></li>
+										<li><a href="{% url 'blog:article' article.article_id %}" class="button big">阅读全文</a></li>
 									</ul>
 									<ul class="stats">
 										<li><a href="#" class="icon fa-heart">{{article.likes}}</a></li>
@@ -117,8 +112,8 @@
 
 						<!-- Pagination -->
 							<ul class="actions pagination">
-								<li><a href="{% url 'blog:article' prepage %}" class="{{previous}} button big previous">上一页</a></li>
-								<li><a href="{% url 'blog:article' nextpage %}" class="{{next}} button big next">下一页</a></li>
+								<li><a href="{% url 'blog:view' prepage %}" class="{{previous}} button big previous">上一页</a></li>
+								<li><a href="{% url 'blog:view' nextpage %}" class="{{next}} button big next">下一页</a></li>
 							</ul>
 
 					</div>
@@ -131,7 +126,7 @@
 							<section id="intro">
 								<a href="#" class="logo"><img src="{% static 'images/logo.jpg' %}" alt="" /></a>
 								<header>
-									<h2>Future Imperfect</h2>
+									<h2>xiepingfu blog</h2>
 									<p>Another fine responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>
 								</header>
 							</section>
@@ -260,6 +255,82 @@
 
 			</div>
 
+		<!--
+<div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                 <a class="btn big-login" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>
+                 <a class="btn big-register" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></div>
+            <div class="col-sm-4"></div>
+        </div>
+
+
+		 <div class="modal fade login" id="loginModal">
+		      <div class="modal-dialog login animated">
+    		      <div class="modal-content">
+    		         <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Login with</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box">
+                             <div class="content">
+                                <div class="social">
+                                    <a class="circle github" href="/auth/github">
+                                        <i class="fa fa-github fa-fw"></i>
+                                    </a>
+                                    <a id="google_login" class="circle google" href="/auth/google_oauth2">
+                                        <i class="fa fa-google-plus fa-fw"></i>
+                                    </a>
+                                    <a id="facebook_login" class="circle facebook" href="/auth/facebook">
+                                        <i class="fa fa-facebook fa-fw"></i>
+                                    </a>
+                                </div>
+                                <div class="division">
+                                    <div class="line l"></div>
+                                      <span>or</span>
+                                    <div class="line r"></div>
+                                </div>
+                                <div class="error"></div>
+                                <div class="form loginBox">
+                                    <form method="post" action="/login" accept-charset="UTF-8">
+                                    <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                    <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                    <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                    </form>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="box">
+                            <div class="content registerBox" style="display:none;">
+                             <div class="form">
+                                <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
+                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
+                                <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            <span>Looking to
+                                 <a href="javascript: showRegisterForm();">create an account</a>
+                            ?</span>
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                             <span>Already have an account?</span>
+                             <a href="javascript: showLoginForm();">Login</a>
+                        </div>
+                    </div>
+    		      </div>
+		      </div>
+		  </div>
+    </div>
+    -->
 		<!-- Scripts -->
 			<script src="{% static 'js/jquery.min.js' %}"></script>
 			<script src="{% static 'js/skel.min.js' %}"></script>

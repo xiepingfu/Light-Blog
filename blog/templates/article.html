@@ -1,0 +1,33 @@
+{% extends "./index.html" %}
+{% load static %}
+{% block main %}
+<div id = "main">
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2><a href="#">{{ article.title }}</a></h2>
+                <p>{{ article.subtitle }}</p>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="2015-11-01">{{article.time}}</time>
+                <a href="#" class="author"><span class="name">xiepingfu</span><img src="{% static 'images/avatar.jpg' %}" alt="" /></a>
+            </div>
+        </header>
+        <a href="{% url 'blog:article' article.article_id %}" class="image featured"><img src="{{article.image.url}}" alt="" /></a>
+            <dvi>
+            {{article.content}}
+            </dvi>
+        <footer>
+            <ul class="actions">
+
+            </ul>
+            <ul class="stats">
+                <li><a href="#" class="icon fa-heart">{{article.likes}}</a></li>
+                <li><a href="#" class="icon fa-comment">{{article.reviews}}</a></li>
+            </ul>
+        </footer>
+    </article>
+</div>
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
