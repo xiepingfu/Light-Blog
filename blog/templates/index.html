@@ -117,8 +117,8 @@
 
 						<!-- Pagination -->
 							<ul class="actions pagination">
-								<li><a href="" class="disabled button big previous">上一页</a></li>
-								<li><a href="#" class="button big next">下一页</a></li>
+								<li><a href="{% url 'blog:article' prepage %}" class="{{previous}} button big previous">上一页</a></li>
+								<li><a href="{% url 'blog:article' nextpage %}" class="{{next}} button big next">下一页</a></li>
 							</ul>
 
 					</div>

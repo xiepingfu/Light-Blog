@@ -18,7 +18,7 @@ class ReviewInline(admin.TabularInline):
 
 class ArticleAdmin(admin.ModelAdmin):
     inlines = [ReviewInline]
-    list_display = ('title', 'time','public')
+    list_display = ('article_id','title', 'time','public')
     list_filter = ['title']
     search_fields = ['content']
 
