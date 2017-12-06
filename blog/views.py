@@ -14,11 +14,6 @@ def index(request):
     context = {'articles':articles}
     return render(request, 'index.html', context)
 
-def index2(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list, 'sta':'shortcuts'}
-    return render(request, 'polls/index.html', context)
-
 def about(request):
     return render(request, 'about.html')
 

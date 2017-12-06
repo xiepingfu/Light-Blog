@@ -21,9 +21,12 @@ class article(models.Model):
     title = models.CharField(max_length=140)
     subtitle = models.CharField(max_length=140)
     content = models.TextField(default="")
+    synopsis = models.CharField(max_length=140,default="")
     time = models.DateTimeField()
     likes = models.BigIntegerField(default=0)
     public = models.BooleanField(default=True)
+    reviews = models.BigIntegerField(default=0)
+    image = models.ImageField(upload_to='img')
 
     def __str__(self):
         return self.title
